@@ -2,6 +2,8 @@
 eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
 conda activate banmo/
 seqname=cat-pikachiu
+mkdir -p tmp 
+mkdir -p logdir
 # To speed up data loading, we store images as lines of pixels). 
 # only needs to run it once per sequence and data are stored
 python preprocess/img2lines.py --seqname $seqname
