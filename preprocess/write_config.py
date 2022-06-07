@@ -16,15 +16,17 @@ config['data'] = {
 'init_frame': '0',
 'end_frame': '-1',
 'can_frame': '-1'}
-
+print('%s/%s[0-9][0-9][0-9]'%(silroot, seqname_pre))
 seqname_all = sorted(glob.glob('%s/%s[0-9][0-9][0-9]'%(silroot, seqname_pre)))
-
+print(seqname_all)
 total_vid = 0
 for i,seqname in enumerate(seqname_all):
     seqname = seqname.split('/')[-1]
+    print(seqname)
     img = cv2.imread('%s/%s/00000.png'%(silroot,seqname),0)
     if img is None:continue
     num_fr = len(glob.glob('%s/%s/*.png'%(silroot,seqname)))
+    print(num_fr)
     if num_fr < 16:continue
 
     fl = max(img.shape)

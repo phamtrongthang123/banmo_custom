@@ -13,3 +13,5 @@ lasr_vcn/
 .nfs*
 banmo
 *.zip
+*.jpg
+*.pfm
