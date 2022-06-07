@@ -33,7 +33,7 @@ sys.path.insert(0,'third_party/ext_utils')
 from utils.io import save_vid, visObj
 from util_flow import write_pfm
   
-
+# print(sys.argv)
 seqname=sys.argv[1]
 ishuman=sys.argv[2] # 'y/n'
 odir='database/DAVIS/'
