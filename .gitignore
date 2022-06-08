@@ -13,3 +13,6 @@ lasr_vcn/
 .nfs*
 banmo
 *.zip
+*.pfm 
+*.jpg
+.gitignore
