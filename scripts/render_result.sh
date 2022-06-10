@@ -6,7 +6,6 @@ test_frames=$3
 testdir=${model_path%/*} # %: from end
 add_args=${*: 3:$#-1}
 prefix=$testdir/$seqname-$test_frames
-
 # part 1
 python extract.py --flagfile=$testdir/opts.log \
                   --seqname $seqname \

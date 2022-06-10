@@ -7,7 +7,7 @@ seqname=camel
 python preprocess/img2lines.py --seqname $seqname
 
 # Optimization
-bash scripts/template-accu.sh 0 $seqname 10001 "no" "no"
+bash scripts/template-accu.sh 2 $seqname 10001 "no" "no"
 # argv[1]: gpu ids separated by comma 
 # args[2]: sequence name
 # args[3]: port for distributed training
@@ -15,7 +15,7 @@ bash scripts/template-accu.sh 0 $seqname 10001 "no" "no"
 # args[5]: use_symm, pass "" to force x-symmetric shape
 
 # Extract articulated meshes and render
-bash scripts/render_mgpu.sh 0 $seqname logdir/$seqname-e120-b128-ft2/params_latest.pth \
+bash scripts/render_mgpu.sh 2 $seqname logdir/$seqname-e120-b128-ft2/params_latest.pth \
         "0" 256
 # argv[1]: gpu id
 # argv[2]: sequence name

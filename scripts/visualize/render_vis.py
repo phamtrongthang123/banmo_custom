@@ -5,6 +5,9 @@ sys.path.append(os.path.dirname(os.path.dirname(sys.path[0])))
 os.environ["PYOPENGL_PLATFORM"] = "egl" #opengl seems to only work with TPU
 sys.path.insert(0,'third_party')
 
+# fix the error egl https://github.com/facebookresearch/banmo/issues/5
+os.environ['EGL_DEVICE_ID'] = '-1'
+
 import subprocess
 import imageio
 import glob
