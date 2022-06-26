@@ -1,13 +1,13 @@
 #!/bin/bash
 eval "$(command conda 'shell.bash' 'hook' 2> /dev/null)"
 conda activate banmo/
-seqname=camel
+seqname=breakdance
 # To speed up data loading, we store images as lines of pixels). 
 # only needs to run it once per sequence and data are stored
 python preprocess/img2lines.py --seqname $seqname
 
 # Optimization
-bash scripts/template-accu.sh 2 $seqname 10002 "no" ""
+bash scripts/template-accu.sh 2 $seqname 10003 "" "no"
 # argv[1]: gpu ids separated by comma 
 # args[2]: sequence name
 # args[3]: port for distributed training
