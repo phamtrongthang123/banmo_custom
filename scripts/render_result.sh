@@ -6,6 +6,7 @@ test_frames=$3
 testdir=${model_path%/*} # %: from end
 add_args=${*: 3:$#-1}
 prefix=$testdir/$seqname-$test_frames
+
 # part 1
 python extract.py --flagfile=$testdir/opts.log \
                   --seqname $seqname \
@@ -125,7 +126,3 @@ $prefix-all.mp4
 #[top][mid][bottom]vstack=inputs=3[v]" \
 
 ffmpeg -y -i $prefix-all.mp4 -vf "scale=iw/2:ih/2" $prefix-all.gif
-#imgcat $prefix*.mp4
-#imgcat $prefix-all.gif
-# cp --parents $prefix-*.mp4 /data3/gengshay/banmo-vids/
-# cp --parents $prefix-*.gif /data3/gengshay/banmo-vids/

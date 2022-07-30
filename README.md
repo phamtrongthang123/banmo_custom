@@ -1,7 +1,8 @@
 # BANMo 
-#### [[Webpage]](https://banmo-www.github.io/) [[Latest preprint (02/14/2022)]](https://banmo-www.github.io/banmo-2-14.pdf) [[Arxiv]](https://arxiv.org/abs/2112.12761) 
+[[Project page]](https://banmo-www.github.io/) [[Paper]](https://banmo-www.github.io/banmo-cvpr.pdf) [[Colab for NVS]](https://colab.research.google.com/drive/1dQJn1vsuz0DkyRZbOA1SulkVQ0V1kMUP?usp=sharing)
 
 ### Changelog
+- **06/18**: Add a colab demo for novel view synthesis.
 - **04/11**: Replace matching loss with feature rendering loss; Fix bugs in LBS; Stablize optimization.
 - **03/20**: Add mesh color option (canonical mappihg vs radiance) during surface extraction. See `--ce_color` flag.
 - **02/23**: Improve NVS with fourier light code, improve uncertainty MLP, add long schedule, minor speed up.
@@ -107,7 +108,7 @@ This means more video frames needs more GPU memory but the same optimization tim
 <details><summary>Try pre-optimized models</summary>
 
 We provide [pre-optimized models](https://www.dropbox.com/sh/5ue6tpsqmt6gstw/AAB9FD6on0UZDnThr6GEde46a?dl=0) 
-and scripts to run novel view synthesis and mesh extraction (results saved at `tmp/*all.mp4`). 
+and scripts to run novel view synthesis and mesh extraction (results saved at `tmp/*all.mp4`). Also see this [Colab for NVS](https://colab.research.google.com/drive/1dQJn1vsuz0DkyRZbOA1SulkVQ0V1kMUP?usp=sharing).
  
 ```
 # download pre-optimized models
@@ -134,7 +135,6 @@ bash scripts/render_mgpu.sh 0 $seqname tmp/cat-pikachiu.pth \
 # argv[3]: weights path
 # argv[4]: video id separated by space
 # argv[5]: resolution of running marching cubes (use 256 to get higher-res mesh)
-  
 ```
 
 </details>
@@ -157,7 +157,7 @@ bash scripts/template.sh 0,1 $seqname 10001 "no" "no"
 # args[5]: use_symm, pass "" to force x-symmetric shape
 
 # Extract articulated meshes and render
-bash scripts/render_mgpu.sh 0 $seqname logdir/$seqname-e120-b256-ft3/params_latest.pth \
+bash scripts/render_mgpu.sh 0 $seqname logdir/$seqname-e120-b256-ft2/params_latest.pth \
         "0 1 2 3 4 5 6 7 8 9 10" 256
 # argv[1]: gpu id
 # argv[2]: sequence name
@@ -177,7 +177,7 @@ https://user-images.githubusercontent.com/13134872/154554031-332e2355-3303-43e3-
 seqname=adult7
 python preprocess/img2lines.py --seqname $seqname
 bash scripts/template.sh 0,1 $seqname 10001 "" ""
-bash scripts/render_mgpu.sh 0 $seqname logdir/$seqname-e120-b256-ft3/params_latest.pth \
+bash scripts/render_mgpu.sh 0 $seqname logdir/$seqname-e120-b256-ft2/params_latest.pth \
         "0 1 2 3 4 5 6 7 8 9" 256
 ```
 
@@ -232,14 +232,14 @@ https://user-images.githubusercontent.com/13134872/154553652-c93834db-cce2-4158-
 
 Render novel views at the canonical camera coordinate
 ```
-bash scripts/render_nvs.sh 0 $seqname logdir/$seqname-e120-b256-ft3/params_latest.pth 5 0
+bash scripts/render_nvs.sh 0 $seqname logdir/$seqname-e120-b256-ft2/params_latest.pth 5 0
 # argv[1]: gpu id
 # argv[2]: sequence name
 # argv[3]: path to the weights
 # argv[4]: video id used for pose traj
 # argv[5]: video id used for root traj
 ```
-Results will be saved at `logdir/$seqname-e120-b256-ft3/nvs*.mp4`.
+Results will be saved at `logdir/$seqname-e120-b256-ft2/nvs*.mp4`.
   
 https://user-images.githubusercontent.com/13134872/155441493-38bf7a02-a6ee-4f2f-9dc5-0cf98a4c7c45.mp4
 
